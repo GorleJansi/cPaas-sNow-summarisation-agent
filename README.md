@@ -86,7 +86,7 @@ cPaas-sNow-summarisation-agent/
 | `SERVICENOW_USERNAME` | ✅ | ServiceNow API user |
 | `SERVICENOW_PASSWORD` | ✅ | ServiceNow API password |
 | `WEBEX_BOT_TOKEN` | ✅ | Webex Bot access token |
-| `WEBEX_BOT_EMAIL` | ✅ | Webex Bot email (e.g. `mybot@webex.bot`) |
+| `WEBEX_BOT_EMAIL` | ✅ | Webex Bot email (e.g. `Case_Summary_Bot@webex.bot`) |
 | `CIRCUIT_CLIENT_ID` | ✅ | CIRCUIT OAuth2 client ID (from Cisco ID / Okta) |
 | `CIRCUIT_CLIENT_SECRET` | ✅ | CIRCUIT OAuth2 client secret |
 | `CIRCUIT_APP_KEY` | ✅ | CIRCUIT application key (from EGAI portal) |

@@ -254,7 +254,7 @@ def _welcome_card(user_email: str = "") -> Dict[str, Any]:
         "body": [
             {
                 "type": "TextBlock",
-                "text": f"{greeting} I'm the Support Assistant 🤖",
+                "text": f"{greeting} I'm the Case Summary Bot 🤖",
                 "weight": "Bolder",
                 "size": "Large",
                 "color": "Accent",
@@ -290,7 +290,7 @@ def _welcome_card(user_email: str = "") -> Dict[str, Any]:
 
 
 def _input_card(
-    title: str = "🔍 Support Assistant",
+    title: str = "🔍 Case Summary Bot",
     subtitle: str = "Enter a ServiceNow case number to generate an AI-powered summary.",
 ) -> Dict[str, Any]:
     """Input form asking the user for a case number."""
@@ -598,14 +598,14 @@ def _summarize_and_flip(room_id: str, case_number: str, card_message_id: Optiona
 # Phrases that Webex echoes back as the plain-text fallback of cards the bot
 # sent. We must ignore these or the bot will enter an infinite loop.
 BOT_FALLBACK_PHRASES: Set[str] = {
-    "support assistant",
-    "support assistant – enter a case number to summarize",
+    "case summary bot",
+    "case summary bot – enter a case number to summarize",
     "generating summary…",
     "generating summary...",
     "summary closed",
     "summarize another case?",
     "summary —",
-    "welcome to support assistant!",
+    "welcome to case summary bot!",
 }
 
 
@@ -637,7 +637,7 @@ def _maybe_send_welcome(room_id: str, user_email: str) -> None:
     send_card(
         room_id,
         _welcome_card(user_email),
-        fallback_text="Welcome to Support Assistant!",
+        fallback_text="Welcome to Case Summary Bot!",
     )
 
 
@@ -655,9 +655,9 @@ def _show_input_card(
         kwargs["subtitle"] = subtitle
     card = _input_card(**kwargs)
     if card_message_id:
-        replace_card(card_message_id, card, fallback_text="Support Assistant", room_id=room_id)
+        replace_card(card_message_id, card, fallback_text="Case Summary Bot", room_id=room_id)
     else:
-        send_card(room_id, card, fallback_text="Support Assistant")
+        send_card(room_id, card, fallback_text="Case Summary Bot")
 
 
 def _route_message(room_id: str, text: str, user_email: str = "") -> dict:
@@ -703,7 +703,7 @@ def _route_message(room_id: str, text: str, user_email: str = "") -> dict:
 
     # ── 5e. Fallback — show the input form ────────────────────────────────
     print(f"  [STEP 5e / _route_message] ⏩ No pattern matched — showing input card")
-    send_card(room_id, _input_card(), fallback_text="Support Assistant – enter a case number to summarize")
+    send_card(room_id, _input_card(), fallback_text="Case Summary Bot – enter a case number to summarize")
     return {"status": "ok", "reason": "Input card shown"}
 
 
@@ -734,7 +734,7 @@ def _parse_case_from_action(action_details: Dict[str, Any]) -> Optional[str]:
 
 @app.get("/")
 def root():
-    return {"message": "ServiceNow + Webex case-summary bot is running ✅"}
+    return {"message": "Case Summary Bot is running ✅"}
 
 
 @app.get("/debug-env")
